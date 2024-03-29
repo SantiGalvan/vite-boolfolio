@@ -23,8 +23,9 @@ export default {
 
 <template>
     <div class="card text-center">
-        <div class="card-header">
+        <div class="card-header" :style="{ 'background-color': project.type ? project.type.color : '' }">
             <h3>{{ project.title }}</h3>
+            <h6>{{ project.type ? project.type.label : 'Nessuna Tipologia' }}</h6>
         </div>
         <div class="card-body">
             <img class="img-fluid mb-3" :src="project.image" :alt="project.title">
