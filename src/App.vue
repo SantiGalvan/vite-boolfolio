@@ -8,7 +8,8 @@ export default {
   name: 'Boolfolio',
   data: () => ({
     projects: [],
-    isLoading: false
+    isLoading: false,
+    isAlertOpen: false
   }),
   components: { AppHeader, ProjectsList },
   methods: {
@@ -18,9 +19,11 @@ export default {
       axios.get(defaultEndpoint).then(res => {
         this.projects = res.data;
 
-        this.isLoading = false;
+        this.isAlertOpen = false;
       }).catch(err => {
         console.error(err);
+
+        this.isAlertOpen = true;
       }).then(() => {
         this.isLoading = false;
       })
@@ -40,6 +43,7 @@ export default {
 
   <!-- Main -->
   <main class="container">
+    <AppAlert :show="isAlertOpen" @close="isAlertOpen = false" />
     <h1 class="text-center my-4">Progetti</h1>
 
     <AppLoader v-if="isLoading" />
