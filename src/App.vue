@@ -8,12 +8,21 @@ export default {
   name: 'Boolfolio',
   data: () => ({
     projects: [],
+    isLoading: false
   }),
   components: { AppHeader, ProjectsList },
   methods: {
     fetchProjects() {
+      this.isLoading = true;
+
       axios.get(defaultEndpoint).then(res => {
         this.projects = res.data;
+
+        this.isLoading = false;
+      }).catch(err => {
+        console.error(err);
+      }).then(() => {
+        this.isLoading = false;
       })
     }
   },
@@ -33,8 +42,9 @@ export default {
   <main class="container">
     <h1 class="text-center my-4">Progetti</h1>
 
+    <AppLoader v-if="isLoading" />
     <!-- Section Projects List -->
-    <ProjectsList :projects="projects" />
+    <ProjectsList v-else :projects="projects" />
   </main>
 </template>
 
