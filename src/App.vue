@@ -32,9 +32,9 @@ export default {
   <!-- Main -->
   <main class="container">
     <h1 class="text-center my-4">Progetti</h1>
-    <ol>
-      <li v-for="project in projects" :key="project.id">{{ project.title }}</li>
-    </ol>
+
+    <!-- Section Projects List -->
+    <ProjectsList :projects="projects" />
   </main>
 </template>
 
