@@ -15,8 +15,8 @@ export default {
 
   <!-- Main -->
   <main class="container">
-
-
+    <!-- Router View -->
+    <RouterView />
   </main>
 </template>
 
