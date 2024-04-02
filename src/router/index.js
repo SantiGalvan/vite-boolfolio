@@ -12,7 +12,8 @@ export default createRouter({
     routes: [
         { path: '/', component: HomePage, name: 'home' },
         { path: '/contact-us', component: ContactUsPage, name: 'contact-us' },
+        { path: '/not-found', component: NotFoundPage, name: 'not-found' },
         // Deve essere per ultimo
-        { path: '/:pathMatch(.*)*', component: NotFoundPage, name: 'not-found' }
+        { path: '/:pathMatch(.*)*', redirect: '/not-found' },
     ]
 });
