@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 // Importo le pagine da usare
 import HomePage from '../pages/HomePage.vue';
 import ContactUsPage from '../pages/ContactUsPage.vue';
+import NotFoundPage from '../pages/NotFoundPage.vue';
 
 // Definisco le rotte
 export default createRouter({
@@ -12,6 +13,6 @@ export default createRouter({
         { path: '/', component: HomePage },
         { path: '/contact-us', component: ContactUsPage },
         // Deve essere per ultimo
-        { path: '/:pathMatch(.*)*', redirect: '/' }
+        { path: '/:pathMatch(.*)*', component: NotFoundPage }
     ]
 });
