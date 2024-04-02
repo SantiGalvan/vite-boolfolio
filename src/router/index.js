@@ -11,5 +11,7 @@ export default createRouter({
     routes: [
         { path: '/', component: HomePage },
         { path: '/contact-us', component: ContactUsPage },
+        // Deve essere per ultimo
+        { path: '/:pathMatch(.*)*', redirect: '/' }
     ]
 });
