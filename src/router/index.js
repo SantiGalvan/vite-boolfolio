@@ -10,9 +10,9 @@ import NotFoundPage from '../pages/NotFoundPage.vue';
 export default createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', component: HomePage },
-        { path: '/contact-us', component: ContactUsPage },
+        { path: '/', component: HomePage, name: 'home' },
+        { path: '/contact-us', component: ContactUsPage, name: 'contact-us' },
         // Deve essere per ultimo
-        { path: '/:pathMatch(.*)*', component: NotFoundPage }
+        { path: '/:pathMatch(.*)*', component: NotFoundPage, name: 'not-found' }
     ]
 });
