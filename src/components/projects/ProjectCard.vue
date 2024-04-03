@@ -71,6 +71,8 @@ export default {
             <RouterLink class="btn btn-primary" :to="{ name: 'project-detail', params: { slug: project.slug } }">Vedi
             </RouterLink>
         </div>
+
+        <!-- Card-footer da vedere nel singolo progetto -->
         <div class="card-footer" v-else>
             <button class="btn btn-secondary" @click="$router.back()">Torna indietro</button>
         </div>
