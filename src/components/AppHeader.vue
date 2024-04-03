@@ -8,7 +8,7 @@ export default {
     <header>
         <nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
             <div class="container">
-                <a class="navbar-brand" href="#">Boolfolio</a>
+                <RouterLink class="navbar-brand" to="/">Boolfolio</RouterLink>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
