@@ -32,6 +32,10 @@ export default {
             <div><strong>Framework:</strong> {{ project.framework }}</div>
             <div class="mt-2"><strong>Creato il:</strong> {{ creationDate }}</div>
         </div>
+        <div class="card-footer">
+            <RouterLink class="btn btn-primary" :to="{ name: 'project-detail', params: { slug: project.slug } }">Vedi
+            </RouterLink>
+        </div>
     </div>
 </template>
 
