@@ -1,7 +1,7 @@
 <script>
 export default {
     name: 'ProjectCard',
-    props: { project: Object },
+    props: { project: Object, isDetail: Boolean },
     computed: {
         creationDate() {
             const date = new Date(this.project.created_at);
@@ -22,17 +22,29 @@ export default {
 </script>
 
 <template>
-    <div class="card text-center">
-        <div class="card-header" :style="{ 'background-color': project.type ? project.type.color : '' }">
+    <div class="card">
+        <div class="card-header text-center" :style="{ 'background-color': project.type ? project.type.color : '' }">
             <h3>{{ project.title }}</h3>
             <h6>{{ project.type ? project.type.label : 'Nessuna Tipologia' }}</h6>
         </div>
-        <div class="card-body">
+        <div class="card-body text-center" v-if="!isDetail">
             <img class="img-fluid mb-3" :src="project.image" :alt="project.title">
             <div><strong>Framework:</strong> {{ project.framework }}</div>
             <div class="mt-2"><strong>Creato il:</strong> {{ creationDate }}</div>
         </div>
-        <div class="card-footer">
+        <div class="card-body" v-else>
+            <div class="row">
+                <div class="col-4 text-center">
+                    <img class="img-fluid mb-3" :src="project.image" :alt="project.title">
+                    <div><strong>Framework:</strong> {{ project.framework }}</div>
+                    <div class="mt-2"><strong>Creato il:</strong> {{ creationDate }}</div>
+                </div>
+                <div class="col">
+                    <p class="lead">{{ project.description }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center" v-if="!isDetail">
             <RouterLink class="btn btn-primary" :to="{ name: 'project-detail', params: { slug: project.slug } }">Vedi
             </RouterLink>
         </div>
