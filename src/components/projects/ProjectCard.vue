@@ -33,7 +33,7 @@ export default {
             <img class="img-fluid mb-3" :src="project.image" :alt="project.title">
             <div><strong>Framework:</strong> {{ project.framework }}</div>
             <div class="mt-2"><strong>Creato il:</strong> {{ creationDate }}</div>
-            <div class="mt-2"><strong>Linguaggio: </strong>
+            <div class="mt-2" v-if="project.technologies.lenght"><strong>Linguaggio: </strong>
                 <span v-for="technology in project.technologies" :key="technology.id" class="badge rounded-pill me-1"
                     :style="{ backgroundColor: technology.color }">
                     {{ technology.label }}</span>
@@ -54,7 +54,7 @@ export default {
                         </span>
                         <span v-else>Nessuna Tipologia</span>
                     </div>
-                    <div class="mt-2"><strong>Linguaggio: </strong>
+                    <div class="mt-2" v-if="project.technologies.lenght"><strong>Linguaggio: </strong>
                         <span v-for="technology in project.technologies" :key="technology.id"
                             class="badge rounded-pill me-1" :style="{ backgroundColor: technology.color }">
                             {{ technology.label }}</span>
