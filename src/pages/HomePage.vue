@@ -1,19 +1,20 @@
 <script>
 import ProjectsList from '../components/projects/ProjectsList.vue';
+import { store } from '../data/store';
 import axios from 'axios';
 const defaultEndpoint = 'http://localhost:8000/api/projects/';
 
 export default {
     name: 'HomePage',
     data: () => ({
+        store,
         projects: [],
-        isLoading: false,
         isAlertOpen: false
     }),
     components: { ProjectsList },
     methods: {
         fetchProjects() {
-            this.isLoading = true;
+            store.isLoading = true;
 
             axios.get(defaultEndpoint).then(res => {
                 this.projects = res.data;
@@ -24,7 +25,7 @@ export default {
 
                 this.isAlertOpen = true;
             }).then(() => {
-                this.isLoading = false;
+                store.isLoading = false;
             })
         }
     },
@@ -38,9 +39,8 @@ export default {
     <AppAlert :show="isAlertOpen" @close="isAlertOpen = false" />
     <h1 class="text-center my-4">Progetti</h1>
 
-    <AppLoader v-if="isLoading" />
     <!-- Section Projects List -->
-    <ProjectsList v-else :projects="projects" />
+    <ProjectsList v-if="!store.isLoading" :projects="projects" />
 </template>
 
 <style></style>

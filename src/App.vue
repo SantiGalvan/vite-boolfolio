@@ -1,9 +1,14 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
+import { store } from './data/store';
 
 export default {
   name: 'Boolfolio',
-  components: { AppHeader }
+  components: { AppHeader },
+  data: () => ({
+    store
+  })
+
 };
 </script>
 
@@ -12,6 +17,8 @@ export default {
   <!-- Header -->
   <AppHeader />
 
+  <!-- AppLoader -->
+  <AppLoader v-if="store.isLoading" />
 
   <!-- Main -->
   <main class="container">
