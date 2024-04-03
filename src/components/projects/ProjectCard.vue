@@ -29,19 +29,36 @@ export default {
         </div>
 
         <!-- Card-body nella lista di progetti -->
-        <div class="card-body text-center" v-if="!isDetail">
+        <div class="card-body text-center" v-if="!isDetail" style="height: 300px;">
             <img class="img-fluid mb-3" :src="project.image" :alt="project.title">
             <div><strong>Framework:</strong> {{ project.framework }}</div>
             <div class="mt-2"><strong>Creato il:</strong> {{ creationDate }}</div>
+            <div class="mt-2"><strong>Linguaggio: </strong>
+                <span v-for="technology in project.technologies" :key="technology.id" class="badge rounded-pill me-1"
+                    :style="{ backgroundColor: technology.color }">
+                    {{ technology.label }}</span>
+            </div>
         </div>
 
         <!-- Card-body nel singolo progetto -->
         <div class="card-body" v-else>
             <div class="row">
-                <div class="col-4 text-center">
+                <div class="col-3">
                     <img class="img-fluid mb-3" :src="project.image" :alt="project.title">
                     <div><strong>Framework:</strong> {{ project.framework }}</div>
                     <div class="mt-2"><strong>Creato il:</strong> {{ creationDate }}</div>
+                    <div class="mt-2">
+                        <strong>Tipologia: </strong>
+                        <span v-if="project.type" class="badge" :style="{ backgroundColor: project.type.color }">
+                            {{ project.type.label }}
+                        </span>
+                        <span v-else>Nessuna Tipologia</span>
+                    </div>
+                    <div class="mt-2"><strong>Linguaggio: </strong>
+                        <span v-for="technology in project.technologies" :key="technology.id"
+                            class="badge rounded-pill me-1" :style="{ backgroundColor: technology.color }">
+                            {{ technology.label }}</span>
+                    </div>
                 </div>
                 <div class="col">
                     <p class="lead">{{ project.description }}</p>
