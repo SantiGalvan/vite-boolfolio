@@ -71,7 +71,10 @@ export default {
             <RouterLink class="btn btn-primary" :to="{ name: 'project-detail', params: { slug: project.slug } }">Vedi
             </RouterLink>
         </div>
+        <div class="card-footer" v-else>
+            <button class="btn btn-secondary" @click="$router.back()">Torna indietro</button>
+        </div>
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang=" scss" scoped></style>
