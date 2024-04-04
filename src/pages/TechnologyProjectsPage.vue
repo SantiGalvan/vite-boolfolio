@@ -13,19 +13,20 @@ export default {
         store
     }),
     methods: {
-        fetchProjects() {
+        async fetchProjects() {
             store.isLoading = true;
 
-            axios.get(`${baseUri}/technologies/${this.$route.params.slug}/projects`).then(res => {
+            try {
+                const res = await axios.get(`${baseUri}/technologies/${this.$route.params.slug}/projects`);
                 const { label, projects } = res.data;
                 this.projects = projects;
                 this.technologyLabel = label;
-            }).catch(err => {
+            } catch (err) {
                 console.error(err);
                 this.$router.push({ name: 'not-found' });
-            }).then(() => {
-                store.isLoading = false;
-            })
+            }
+
+            store.isLoading = false;
         }
     },
     created() {
