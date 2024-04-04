@@ -83,6 +83,8 @@ export default {
     </div>
 </template>
 
-<style lang=" scss" scoped>
-
+<style lang="scss" scoped>
+.card-body {
+    background-color: #f2e9e4;
+}
 </style>
