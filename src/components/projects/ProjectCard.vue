@@ -25,7 +25,11 @@ export default {
     <div class="card">
         <div class="card-header text-center" :style="{ 'background-color': project.type ? project.type.color : '' }">
             <h3>{{ project.title }}</h3>
-            <h6>{{ project.type ? project.type.label : 'Nessuna Tipologia' }}</h6>
+            <RouterLink v-if="project.type" :to="{ name: 'type-projects', params: { slug: project.type.slug } }"
+                class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">
+                <h6>{{ project.type.label }}</h6>
+            </RouterLink>
+            <h6 v-else>Nessuna Tipologia</h6>
         </div>
 
         <!-- Card-body nella lista di progetti -->
@@ -79,4 +83,6 @@ export default {
     </div>
 </template>
 
-<style lang=" scss" scoped></style>
+<style lang=" scss" scoped>
+
+</style>
