@@ -34,23 +34,43 @@ export default {
 
         <!-- Card-body nella lista di progetti -->
         <div class="card-body text-center" v-if="!isDetail" style="height: 300px;">
+
+            <!-- Immagine della card -->
             <img class="img-fluid mb-3" :src="project.image" :alt="project.title">
+
+            <!-- Framework -->
             <div><strong>Framework:</strong> {{ project.framework }}</div>
+
+            <!-- Creato il: -->
             <div class="mt-2"><strong>Creato il:</strong> {{ creationDate }}</div>
+
+            <!-- Linguaggio -->
             <div class="mt-2" v-if="project.technologies.length"><strong>Linguaggio: </strong>
-                <span v-for="technology in project.technologies" :key="technology.id" class="badge rounded-pill me-1"
-                    :style="{ backgroundColor: technology.color }">
-                    {{ technology.label }}</span>
+                <RouterLink v-for="technology in project.technologies" :key="technology.id"
+                    :to="{ name: 'technology-projects', params: { slug: technology.slug } }">
+                    <span class="badge rounded-pill me-1" :style="{ backgroundColor: technology.color }">
+                        {{ technology.label }}
+                    </span>
+                </RouterLink>
             </div>
+
         </div>
 
         <!-- Card-body nel singolo progetto -->
         <div class="card-body" v-else>
             <div class="row">
                 <div class="col-3">
+
+                    <!-- Immagine della card -->
                     <img class="img-fluid mb-3" :src="project.image" :alt="project.title">
+
+                    <!-- Framework -->
                     <div><strong>Framework:</strong> {{ project.framework }}</div>
+
+                    <!-- Creato il: -->
                     <div class="mt-2"><strong>Creato il:</strong> {{ creationDate }}</div>
+
+                    <!-- Tipologia: -->
                     <div class="mt-2">
                         <strong>Tipologia: </strong>
                         <span v-if="project.type" class="badge" :style="{ backgroundColor: project.type.color }">
@@ -58,11 +78,17 @@ export default {
                         </span>
                         <span v-else>Nessuna Tipologia</span>
                     </div>
+
+                    <!-- Linguaggio -->
                     <div class="mt-2" v-if="project.technologies.length"><strong>Linguaggio: </strong>
-                        <span v-for="technology in project.technologies" :key="technology.id"
-                            class="badge rounded-pill me-1" :style="{ backgroundColor: technology.color }">
-                            {{ technology.label }}</span>
+                        <RouterLink v-for="technology in project.technologies" :key="technology.id"
+                            :to="{ name: 'technology-projects', params: { slug: technology.slug } }">
+                            <span class="badge rounded-pill me-1" :style="{ backgroundColor: technology.color }">
+                                {{ technology.label }}
+                            </span>
+                        </RouterLink>
                     </div>
+
                 </div>
                 <div class="col">
                     <p class="lead">{{ project.description }}</p>
