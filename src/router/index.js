@@ -7,6 +7,7 @@ import ContactUsPage from '../pages/ContactUsPage.vue';
 import NotFoundPage from '../pages/NotFoundPage.vue';
 import ProjectDetailPage from '../pages/ProjectDetailPage.vue';
 import TypeProjectsPage from '../pages/TypeProjectsPage.vue';
+import TechnologyProjectsPage from '../pages/TechnologyProjectsPage.vue';
 
 // Definisco le rotte
 export default createRouter({
@@ -17,6 +18,7 @@ export default createRouter({
 
         { path: '/projects/:slug', component: ProjectDetailPage, name: 'project-detail' },
         { path: '/types/:slug/projects', component: TypeProjectsPage, name: 'type-projects' },
+        { path: '/technologies/:slug/projects', component: TechnologyProjectsPage, name: 'technology-projects' },
 
         { path: '/not-found', component: NotFoundPage, name: 'not-found' },
         // Deve essere per ultimo
