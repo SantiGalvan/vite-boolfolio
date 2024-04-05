@@ -32,4 +32,16 @@ body {
   background-color: #495057;
   color: #ced4da;
 }
+
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background: white;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: rgba(42, 41, 41, 0.383);
+}
 </style>
